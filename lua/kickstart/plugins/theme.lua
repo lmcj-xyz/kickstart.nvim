@@ -1,5 +1,6 @@
 return {
-  "folke/tokyonight.nvim",
+  'folke/tokyonight.nvim',
+  --'arcticicestudio/nord-vim',
   lazy = false,
   priority = 1000,
   opts = {},
