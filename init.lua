@@ -126,6 +126,8 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 --vim.o.termguicolors = true
 
+require 'custom.config.vimtex'
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -147,9 +149,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-require 'kickstart.keymaps.telescope'
+require 'kickstart.config.telescope'
 
-require 'kickstart.keymaps.treesitter'
+require 'kickstart.config.treesitter'
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
