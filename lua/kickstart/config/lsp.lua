@@ -50,7 +50,9 @@ end
 local servers = {
   clangd = {},
   hls = {},
-  jedi_language_server = {},
+  -- jedi_language_server = {},
+  -- pyright = {},
+  pylsp = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
