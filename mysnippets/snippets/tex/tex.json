@@ -10,7 +10,7 @@
         "description": "subscript"
     },
     "superscript": {
-        "prefix": "**",
+        "prefix": "^^",
         "body": "^{${1:${TM_SELECTED_TEXT}}}",
         "description": "superscript"
     },
@@ -124,6 +124,16 @@
         "prefix": "@,",
         "body": "\\nonumber",
         "description": "nonumber"
+    },
+    "cite": {
+        "prefix": "cite",
+        "body": "\\cite{${0:${TM_SELECTED_TEXT}}}",
+        "description": "citation"
+    },
+    "inlineMath": {
+        "prefix": "BIM",
+        "body": "$${0:${TM_SELECTED_TEXT}}$",
+        "description": "inline math environment"
     },
     "equation": {
         "prefix": "BEQ",
