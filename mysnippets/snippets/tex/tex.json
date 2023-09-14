@@ -1,4 +1,14 @@
 {
+    "probability space": {
+        "prefix": "ps",
+        "body": "($1, \\mathcal{$2}, \\mathbb{$3})$0",
+        "description": "boilerplace for probability space notation"
+    },
+    "index":{
+        "prefix": "index",
+        "body": "\\textit{$1}\\index{$1}$0",
+        "description": "creates an index item"
+    },
     "item": {
         "prefix": "item",
         "body": "\n\\item ",
@@ -130,9 +140,14 @@
         "body": "\\cite{${0:${TM_SELECTED_TEXT}}}",
         "description": "citation"
     },
+    "post": {
+        "prefix": "post",
+        "body": "\\cite[${2:${TM_SELECTED_TEXT}}]{${1:${TM_SELECTED_TEXT}}}$0",
+        "description": "citation with postnote"
+    },
     "inlineMath": {
         "prefix": "BIM",
-        "body": "$${0:${TM_SELECTED_TEXT}}$",
+        "body": "$${1:${TM_SELECTED_TEXT}}$$0",
         "description": "inline math environment"
     },
     "equation": {
