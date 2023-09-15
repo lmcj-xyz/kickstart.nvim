@@ -142,7 +142,7 @@
     },
     "post": {
         "prefix": "post",
-        "body": "\\cite[${2:${TM_SELECTED_TEXT}}]{${1:${TM_SELECTED_TEXT}}}$0",
+        "body": "\\cite[\\mention{${2:${TM_SELECTED_TEXT}}}]{${1:${TM_SELECTED_TEXT}}}$0",
         "description": "citation with postnote"
     },
     "inlineMath": {
