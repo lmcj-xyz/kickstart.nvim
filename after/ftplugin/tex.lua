@@ -1,9 +1,9 @@
 vim.g.tex_flavor = 'latex'
-vim.opt_local.conceallevel = 0
-vim.opt_local.indentexpr = '2'
-vim.opt_local.softtabstop = 2
-vim.opt_local.tabstop = 2
-vim.opt_local.shiftwidth = 2
+vim.opt.conceallevel = 0
+--vim.opt.indentexpr = '2'
+--vim.opt.softtabstop = 2
+--vim.opt.tabstop = 2
+--vim.opt.shiftwidth = 2
 --vim.opt_local.nosmarttab = 'on'
 --vim.opt_local.noexpandtab = 1
 --vim.opt_local.nopreserveindent = 1
