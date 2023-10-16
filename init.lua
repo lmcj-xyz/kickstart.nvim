@@ -33,7 +33,7 @@ require('lazy').setup({
   'tpope/vim-rhubarb', -- Extention for fugitive (LM: I do not need this at the moment)
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  --'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -133,7 +133,7 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'tokyonight',
         component_separators = '|',
         section_separators = '',
@@ -209,7 +209,11 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Spelling
-vim.o.spelllang = 'en_gb,es_mx' -- Is this actually doing something?
+vim.opt.spell = true
+vim.opt.spelllang = {'en_gb', 'es_mx'}
+
+-- ftplugin
+--vim.api.nvim_command('filetype plugin indent on')
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -305,15 +309,17 @@ vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'c', 'cpp', 'lua', 'python', 'vimdoc', 'vim', 'haskell' },
-    -- I prefer vimtex to handle all latex related stuff
-    --ignore_install = { 'latex' },
+    modules = { }, -- added so that there are no warnings
+    sync_install = true, -- added so that there are no warnings
+    ignore_install = { },
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
-    highlight = { enable = true },-- , disable = { 'latex' }},
-    indent = { enable = true },--, disable = { 'python', 'latex' } },
+    -- I prefer vimtex to handle all latex related stuff
+    highlight = { enable = true, disable = { 'latex' }},
+    indent = { enable = true, disable = { 'latex' } },
     incremental_selection = {
       enable = true,
-      --disable = { 'latex' },
+      disable = { 'latex' },
       keymaps = {
         init_selection = '<c-space>',
         node_incremental = '<c-space>',
@@ -324,7 +330,7 @@ vim.defer_fn(function()
     textobjects = {
       select = {
         enable = true,
-        --disable = { 'latex' },
+        disable = { 'latex' },
         lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
@@ -338,7 +344,7 @@ vim.defer_fn(function()
       },
       move = {
         enable = true,
-        --disable = { 'latex' },
+        disable = { 'latex' },
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
           [']m'] = '@function.outer',
@@ -359,7 +365,7 @@ vim.defer_fn(function()
       },
       swap = {
         enable = true,
-        --disable = { 'latex' },
+        disable = { 'latex' },
         swap_next = {
           ['<leader>a'] = '@parameter.inner',
         },
@@ -521,8 +527,9 @@ cmp.setup {
   },
 }
 
--- [[ Configure vimtex ]]
+-- [[ Configure vimtex and latex ]]
 --require 'custom.config.vimtex'
+vim.g.tex_flavor = 'latex'
 vim.g.vimtex_complete_close_braces = 1
 vim.g.vimtex_quickfix_open_on_warning = 0
 vim.g.vimtex_compiler_method = 'latexmk'
