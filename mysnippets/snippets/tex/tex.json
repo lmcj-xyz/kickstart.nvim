@@ -152,7 +152,7 @@
     },
     "equation": {
         "prefix": "BEQ",
-        "body": "\\begin{equation}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{equation}",
+        "body": "\\begin{equation}\n${0:${TM_SELECTED_TEXT}}\n\\end{equation}",
         "description": "equation environment"
     },
     "equation*": {
