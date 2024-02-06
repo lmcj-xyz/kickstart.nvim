@@ -1,3 +1,65 @@
+-- [[ Setting options ]]
+-- See `:help vim.o`
+-- NOTE: You can change these options as you wish!
+
+-- Spelling
+vim.opt.spell = true
+vim.opt.spelllang = {'en_gb', 'es_mx'}
+
+-- ftplugin
+--vim.api.nvim_command('filetype plugin indent on')
+
+-- Set highlight on search
+vim.opt.hlsearch = false
+
+-- Make line numbers default
+vim.opt.number = true
+
+-- Make line numbers relative tu current line
+vim.opt.relativenumber = true
+
+-- Enable mouse mode
+vim.opt.mouse = 'a'
+
+-- Scrolloff
+vim.opt.scrolloff = 10
+
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.opt.clipboard = 'unnamedplus'
+
+-- Enable break indent
+vim.opt.breakindent = true
+
+-- Save undo history
+vim.opt.undofile = true
+
+-- Case insensitive searching UNLESS /C or capital in search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+-- Decrease update time
+vim.opt.updatetime = 250
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
+
+-- Set completeopt to have a better completion experience
+vim.opt.completeopt = 'menuone,noselect'
+
+-- NOTE: You should make sure your terminal supports this
+vim.opt.termguicolors = true
+
+-- Splits
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+-- More useful block selection
+vim.opt.virtualedit = "block"
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
@@ -26,14 +88,34 @@ vim.opt.rtp:prepend(lazypath)
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
+  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
+  --       These are some example plugins that I've included in the kickstart repository.
+  --       Uncomment any of the lines below to enable them.
+  -- require 'kickstart.plugins.autoformat',
+  -- require 'kickstart.plugins.debug',
+
+  -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
+  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
+  --    up-to-date with whatever is in the kickstart repo.
+  --
+  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
+  --{ import = 'custom.plugins' },
+	'lervag/vimtex',
+
+  -- NOTE: First, some plugins that don't require any configuration or minimal
 
   -- Git related plugins
   'tpope/vim-fugitive', -- Git integration
   'tpope/vim-rhubarb', -- Extention for fugitive (LM: I do not need this at the moment)
 
+  -- Useful plugin to show you pending keybinds.
+  { 'folke/which-key.nvim', opts = {} },
+
   -- Detect tabstop and shiftwidth automatically
   --'tpope/vim-sleuth',
+
+  -- "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim', opts = {} },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -67,9 +149,6 @@ require('lazy').setup({
       --'rafamadriz/friendly-snippets',
     },
   },
-
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
 
   --require 'kickstart.plugins.gitsigns',
   {
@@ -150,13 +229,9 @@ require('lazy').setup({
         ---@param colors ColorScheme
         on_highlights = function(highlights, colors) end,
       })
-      vim.cmd.colorscheme 'tokyonight'
+      vim.cmd.colorscheme('tokyonight')
     end,
   },
-  --{
-  --  vim.cmd.colorscheme 'industry'
-  --},
-
 
   -- Status line related configs go here
   --require 'kickstart.plugins.statusline',
@@ -174,7 +249,6 @@ require('lazy').setup({
     },
   },
 
-
   --require 'kickstart.plugins.intentation_lines',
   {
     -- Add indentation guides even on blank lines
@@ -187,9 +261,6 @@ require('lazy').setup({
       --show_trailing_blankline_indent = false,
     },
   },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
 
   --require 'kickstart.plugins.telescope',
   {
@@ -222,76 +293,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
-
-  -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  --{ import = 'custom.plugins' },
-	'lervag/vimtex',
 }, {})
-
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
--- Spelling
-vim.opt.spell = true
-vim.opt.spelllang = {'en_gb', 'es_mx'}
-
--- ftplugin
---vim.api.nvim_command('filetype plugin indent on')
-
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Make line numbers default
-vim.wo.number = true
-
--- Make line numbers relative tu current line
-vim.o.relativenumber = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Scrolloff
-vim.o.scrolloff = 10
-
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
 
@@ -342,7 +344,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'lua', 'python', 'vimdoc', 'vim', 'haskell' },
+    ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'cpp', "python", 'haskell' },
     modules = { }, -- added so that there are no warnings
     sync_install = true, -- added so that there are no warnings
     ignore_install = { },
@@ -350,15 +352,15 @@ vim.defer_fn(function()
     auto_install = false,
     -- I prefer vimtex to handle all latex related stuff
     highlight = { enable = true, disable = { 'latex' }},
-    indent = { enable = true, disable = { 'latex' } },
+    --indent = { enable = true, disable = { 'latex' } },
     incremental_selection = {
       enable = true,
       disable = { 'latex' },
       keymaps = {
-        init_selection = '<c-space>',
-        node_incremental = '<c-space>',
-        scope_incremental = '<c-s>',
-        node_decremental = '<M-space>',
+        init_selection = "<Leader>ss",
+        node_incremental = "<Leader>si",
+        scope_incremental = "<Leader>sc",
+        node_decremental = "<Leader>sd",
       },
     },
     textobjects = {
