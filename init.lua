@@ -593,6 +593,16 @@ vim.g.vimtex_syntax_conceal = {
 }
 
 -- [[ Custom mappings ]]
+vim.keymap.set(
+  {'n', 'i', 'v'},
+  '<F2>',
+  function()
+    vim.cmd.write()
+    vim.cmd('mksession! session.vim')
+    print('Session saved successfully!')
+  end,
+  { desc = 'Write the file and session' }
+  )
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
