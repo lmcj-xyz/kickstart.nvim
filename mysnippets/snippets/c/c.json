@@ -1,12 +1,12 @@
 {
     "Comment block": {
         "prefix": "/",
-        "body": ["/*$0 */"],
+        "body": ["/* $0 */"],
         "description": "Convenient comment block"
     },
     "Multiline comment": {
         "prefix": "//",
-        "body": ["/*$0", " */"],
+        "body": ["/* $0", " */"],
         "description": "Convenient multiline comment"
     },
     "Starter Template": {
@@ -46,7 +46,7 @@
     },
     "main(void) template": {
         "prefix": "mainn",
-        "body": ["int main(void){$0", "", "  return EXIT_SUCCESS;", "}"],
+        "body": ["int main(void){$0", "  return EXIT_SUCCESS;", "}"],
         "description": "No-args main() snippet"
     },
     "#include <...>": {
@@ -121,12 +121,12 @@
     },
     "if": {
         "prefix": "if",
-        "body": ["if (${1:true}) {$0", "}"],
+        "body": ["if (${1:true}){", "$0", "}"],
         "description": "'if' snippet"
     },
     "if else": {
         "prefix": "ifelse",
-        "body": ["if (${1:true}) {$2", "} else {$0", "}"],
+        "body": ["if (${1:true}){", "$2", "} else {", "$0", "}"],
         "description": "'if' with 'else'"
     },
     "else": {
